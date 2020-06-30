@@ -13,11 +13,14 @@ public class Folder {
     @Column(name="title")
     private String title;
 
-
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     //constructor
-    public Folder(String title) {
+    public Folder(String title, User user) {
         this.title = title;
+        this.user = user;
     }
 
     // empty constructor
@@ -41,5 +44,13 @@ public class Folder {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
