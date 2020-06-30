@@ -31,7 +31,6 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
 
-
         User bob = new User("Bob Winkleman");
         userRepository.save(bob);
 
