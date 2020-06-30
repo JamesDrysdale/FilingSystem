@@ -18,11 +18,16 @@ public class File {
     @Column(name="size")
     private int size;
 
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+    private Folder folder;
+
     //constructor
-    public File(String name, String extension, int size) {
+    public File(String name, String extension, int size, Folder folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
+        this.folder = folder;
     }
 
     //empty constructor
@@ -62,5 +67,13 @@ public class File {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Folder getFolder() {
+        return folder;
+    }
+
+    public void setFolder(Folder folder) {
+        this.folder = folder;
     }
 }

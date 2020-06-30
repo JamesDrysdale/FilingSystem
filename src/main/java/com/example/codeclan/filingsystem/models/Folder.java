@@ -1,6 +1,10 @@
 package com.example.codeclan.filingsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="folders")
@@ -17,10 +21,15 @@ public class Folder {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "folder")
+    private List<File> files;
+
     //constructor
     public Folder(String title, User user) {
         this.title = title;
         this.user = user;
+        this.files = new ArrayList<>();
     }
 
     // empty constructor
@@ -52,5 +61,13 @@ public class Folder {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 }
