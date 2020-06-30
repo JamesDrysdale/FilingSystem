@@ -13,6 +13,8 @@ public class Folder {
     @Column(name="title")
     private String title;
 
+
+
     //constructor
     public Folder(String title) {
         this.title = title;
